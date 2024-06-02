@@ -282,7 +282,7 @@ void checkReminderData() {
   // app_icon needs to be a added as a drawable
   // resource to the Android head project.
   var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
-  var ios = new IOSInitializationSettings();
+  var ios = new DarwinInitializationSettings();
 
   // initialise settings for both Android and iOS device.
   var settings = new InitializationSettings(android: android, iOS: ios);
@@ -308,7 +308,6 @@ void checkReminderData() {
       // List<String> jsonDecodeTags =new List<String>.from(getData);
       // // List<String> jsonDecodeTags = jsonDecode(jsonTags) as List<String>;
       // print("tags=$jsonTags==$tags==$jsonDecodeTags");
-
     }
   });
 
@@ -324,7 +323,7 @@ Future _showNotificationWithDefaultSound(flip) async {
   var androidPlatformChannelSpecifics = new AndroidNotificationDetails(
       'your channel id', 'your channel name',
       importance: Importance.max, priority: Priority.high);
-  var iOSPlatformChannelSpecifics = new IOSNotificationDetails();
+  var iOSPlatformChannelSpecifics = new DarwinNotificationDetails();
 
   // initialise channel platform for both Android and iOS device.
   var platformChannelSpecifics = new NotificationDetails(

@@ -38,18 +38,14 @@ class _DetailScreenState extends State<ExerciseDetailScreen> {
     Navigator.pop(context);
   }
 
-
   YoutubePlayerController youtubePlayerController = YoutubePlayerController(
     // initialVideoId: "7QUtEmBT_-w",
-    initialVideoId: YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=krlBcLYtDbk")!,
+    initialVideoId: YoutubePlayer.convertUrlToId(
+        "https://www.youtube.com/watch?v=krlBcLYtDbk")!,
     flags: YoutubePlayerFlags(
       autoPlay: true,
-
     ),
   );
-
-
-
 
   @override
   void initState() {
@@ -79,7 +75,6 @@ class _DetailScreenState extends State<ExerciseDetailScreen> {
     //
     //   });
     setFavIcons();
-
   }
 
   getEquipmentList(List<ModelEquipment> equipmentList) {
@@ -158,7 +153,6 @@ class _DetailScreenState extends State<ExerciseDetailScreen> {
 
   @override
   void didChangeDependencies() {
-
     super.didChangeDependencies();
   }
 
@@ -166,337 +160,327 @@ class _DetailScreenState extends State<ExerciseDetailScreen> {
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return WillPopScope(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        // appBar: getThemeAppBar(widget.exerciseDetail!.exerciseName!, () {
-        //   closeActivity();
-        // }),
-        body: SafeArea(
-          child: Container(
-
-
-
-            child: GestureDetector(
-              onTap: () {
-                closeActivity();
-              },
-              child: Stack(
-                children: [
-
-                  ConstantWidget.getAppBar(context, widget.exerciseDetail!.exerciseName!, () {
+        child: Scaffold(
+            backgroundColor: Colors.white,
+            // appBar: getThemeAppBar(widget.exerciseDetail!.exerciseName!, () {
+            //   closeActivity();
+            // }),
+            body: SafeArea(
+              child: Container(
+                child: GestureDetector(
+                  onTap: () {
                     closeActivity();
-                  }),
-
-
-                Container(
-                  margin:
-                  EdgeInsets.only(top: ConstantWidget.getMarginTop(context)),
-
+                  },
                   child: Stack(
-                  children: [Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Hero(
-                          tag: "ex2.mp4",
-                          child: Container(
-                            margin: EdgeInsets.all(12),
-                            height: SizeConfig.safeBlockVertical! * 30,
-
-                            child: Center(
-                              child:
-                              // _controller!.value.isInitialized
-                              //     ?
-                              // VideoPlayer(_controller)
-
-
-                              YoutubePlayer(
-
-                                controller: youtubePlayerController,
-                                bottomActions: [
-                                  CurrentPosition(),
-                                  ProgressBar(isExpanded: true),
-                                ],
-                              )
-
-
-
-                                // AspectRatio(
-                              //   aspectRatio:
-                              //   _controller!.value.aspectRatio,
-                              //   child: VideoPlayer(_controller!),
-                              // )
-                              //     : getProgressDialog(),
-                              // : Container(color: Colors.amber),
-                            ),
-                          )),
-
+                    children: [
+                      ConstantWidget.getAppBar(
+                          context, widget.exerciseDetail!.exerciseName!, () {
+                        closeActivity();
+                      }),
                       Container(
-                        width: double.infinity,
-                        decoration: BoxDecoration(
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black12,
-                              blurRadius: 16.0,
-                            ),
-                          ],
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(30),
-                              topRight: Radius.circular(30)),
-                          color: ConstantData.themeData.backgroundColor,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        margin: EdgeInsets.only(
+                            top: ConstantWidget.getMarginTop(context)),
+                        child: Stack(
                           children: [
-                            SizedBox(
-                              height: 15,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: <Widget>[
+                                Hero(
+                                    tag: "ex2.mp4",
+                                    child: Container(
+                                      margin: EdgeInsets.all(12),
+                                      height:
+                                          SizeConfig.safeBlockVertical! * 30,
+                                      child: Center(
+                                          child:
+                                              // _controller!.value.isInitialized
+                                              //     ?
+                                              // VideoPlayer(_controller)
+
+                                              YoutubePlayer(
+                                        controller: youtubePlayerController,
+                                        bottomActions: [
+                                          CurrentPosition(),
+                                          ProgressBar(isExpanded: true),
+                                        ],
+                                      )
+
+                                          // AspectRatio(
+                                          //   aspectRatio:
+                                          //   _controller!.value.aspectRatio,
+                                          //   child: VideoPlayer(_controller!),
+                                          // )
+                                          //     : getProgressDialog(),
+                                          // : Container(color: Colors.amber),
+                                          ),
+                                    )),
+                                Container(
+                                  width: double.infinity,
+                                  decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black12,
+                                        blurRadius: 16.0,
+                                      ),
+                                    ],
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(30),
+                                        topRight: Radius.circular(30)),
+                                    color:
+                                        ConstantData.themeData.backgroundColor,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      SizedBox(
+                                        height: 15,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(7),
+                                        child: getMediumBoldText(
+                                            widget
+                                                .exerciseDetail!.exerciseName!,
+                                            Colors.black),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsets.all(7),
+                                        child: getSmallNormalText(
+                                            widget.exerciseDetail!
+                                                .exerciseDetail!,
+                                            Colors.black54),
+                                      ),
+                                      // SizedBox(
+                                      //   height: 10,
+                                      // ),
+                                      // Padding(
+                                      //   padding: EdgeInsets.all(7),
+                                      //   child: getSmallBoldText(
+                                      //       S
+                                      //           .of(context)
+                                      //           .equipmentRequired,
+                                      //       Colors.black),
+                                      // ),
+                                      // FutureBuilder<List<ModelEquipment>>(
+                                      //   future: _databaseHelper
+                                      //       .getEquipmentList(exerciseDetail!.id!, context),
+                                      //   builder: (context, snapshot) {
+                                      //     print("idsnap===${snapshot.data}");
+                                      //     return (snapshot.hasData)
+                                      //         ? getEquipmentList(snapshot.data!)
+                                      //         : getProgressDialog();
+                                      //   },
+                                      // )
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            Padding(
-                              padding: EdgeInsets.all(7),
-                              child: getMediumBoldText(
-                                  widget.exerciseDetail!.exerciseName!,
-                                  Colors.black),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.all(7),
-                              child: getSmallNormalText(
-                                  widget.exerciseDetail!.exerciseDetail!,
-                                  Colors.black54),
-                            ),
-                            // SizedBox(
-                            //   height: 10,
-                            // ),
-                            // Padding(
-                            //   padding: EdgeInsets.all(7),
-                            //   child: getSmallBoldText(
-                            //       S
-                            //           .of(context)
-                            //           .equipmentRequired,
-                            //       Colors.black),
-                            // ),
-                            // FutureBuilder<List<ModelEquipment>>(
-                            //   future: _databaseHelper
-                            //       .getEquipmentList(exerciseDetail!.id!, context),
-                            //   builder: (context, snapshot) {
-                            //     print("idsnap===${snapshot.data}");
-                            //     return (snapshot.hasData)
-                            //         ? getEquipmentList(snapshot.data!)
-                            //         : getProgressDialog();
-                            //   },
-                            // )
+                            Align(
+                              alignment: Alignment.topRight,
+                              // alignment: Alignment.bottomRight,
+                              child: Card(
+                                margin: EdgeInsets.only(
+                                    right: 14,
+                                    top: SizeConfig.safeBlockVertical! * 30,
+                                    bottom: 14,
+                                    left: 14),
+                                // margin: EdgeInsets.all(14),
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25)),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    IconButton(
+                                      icon: iconFav!,
+                                      color: primaryColor,
+                                      onPressed: () {
+                                        if (exerciseDetail!.isFavorite! ==
+                                            "1") {
+                                          _databaseHelper.updateFav(
+                                              "0", exerciseDetail!.id!);
+                                        } else {
+                                          _databaseHelper.updateFav(
+                                              "1", exerciseDetail!.id!);
+                                        }
+                                        // setState(() {
+                                        _databaseHelper
+                                            .getExerciseDetailByid(
+                                                exerciseDetail!.id!, context)
+                                            .then((value) {
+                                          setState(() {
+                                            exerciseDetail = value;
+                                            setFavIcons();
+                                          });
+                                        });
+                                        // setFavIcons();
+                                        // });
+                                      },
+                                    ),
+                                    // SizedBox(width: 5,),
+                                    IconButton(
+                                      icon: Icon(Icons.share),
+                                      color: primaryColor,
+                                      onPressed: () {},
+                                    ),
+                                    SizedBox(
+                                      width: 10,
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )
                           ],
                         ),
-                      ),
-
+                      )
                     ],
-                  ), Align(
-                    alignment: Alignment.topRight,
-                    // alignment: Alignment.bottomRight,
-                    child: Card(
-                      margin: EdgeInsets.only(right: 14,
-                          top: SizeConfig.safeBlockVertical! * 30,
-                          bottom: 14,
-                          left: 14),
-                      // margin: EdgeInsets.all(14),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(25)),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          SizedBox(
-                            width: 10,
-                          ),
-                          IconButton(
-                            icon: iconFav!,
-                            color: primaryColor,
-                            onPressed: () {
-                              if (exerciseDetail!.isFavorite! == "1") {
-                                _databaseHelper.updateFav(
-                                    "0", exerciseDetail!.id!);
-                              } else {
-                                _databaseHelper.updateFav(
-                                    "1", exerciseDetail!.id!);
-                              }
-                              // setState(() {
-                              _databaseHelper
-                                  .getExerciseDetailByid(
-                                  exerciseDetail!.id!, context)
-                                  .then((value) {
-                                setState(() {
-                                  exerciseDetail = value;
-                                  setFavIcons();
-                                });
-                              });
-                              // setFavIcons();
-                              // });
-                            },
-                          ),
-                          // SizedBox(width: 5,),
-                          IconButton(
-                            icon: Icon(Icons.share),
-                            color: primaryColor,
-                            onPressed: () {},
-                          ),
-                          SizedBox(
-                            width: 10,
-                          )
-                        ],
-                      ),
-                    ),
-                  )
-
-                  ],
-                ),)
-
-
-
-              ],
-            ),
-      ),
-      // child: Stack(
-      //   children: [
-      //     SingleChildScrollView(
-      //       child: Column(
-      //         crossAxisAlignment: CrossAxisAlignment.start,
-      //         children: <Widget>[
-      //           Hero(
-      //               tag: widget.exerciseDetail.exerciseImage,
-      //               child: Container(
-      //                 margin: EdgeInsets.all(12),
-      //                 height: SizeConfig.safeBlockVertical * 30,
-      //                 color: Colors.white,
-      //                 child: Center(
-      //                   child: _controller.value.initialized
-      //                       ?
-      //                       // VideoPlayer(_controller)
-      //                       AspectRatio(
-      //                           aspectRatio:
-      //                               _controller.value.aspectRatio,
-      //                           child: VideoPlayer(_controller),
-      //                         )
-      //                       : getProgressDialog(),
-      //                   // : Container(color: Colors.amber),
-      //                 ),
-      //               )),
-      //
-      //           Container(
-      //             width: double.infinity,
-      //             decoration: BoxDecoration(
-      //               boxShadow: [
-      //                 BoxShadow(
-      //                   color: Colors.black12,
-      //                   blurRadius: 16.0,
-      //                 ),
-      //               ],
-      //               borderRadius: BorderRadius.only(
-      //                   topLeft: Radius.circular(30),
-      //                   topRight: Radius.circular(30)),
-      //               color: ConstantData.themeData.backgroundColor,
-      //             ),
-      //             child: Column(
-      //               crossAxisAlignment: CrossAxisAlignment.start,
-      //               children: [
-      //                 SizedBox(
-      //                   height: 15,
-      //                 ),
-      //                 Padding(
-      //                   padding: EdgeInsets.all(7),
-      //                   child: getMediumBoldText(
-      //                       widget.exerciseDetail.exerciseName,
-      //                       Colors.black),
-      //                 ),
-      //                 Padding(
-      //                   padding: EdgeInsets.all(7),
-      //                   child: getSmallNormalText(
-      //                       widget.exerciseDetail.exerciseDetail,
-      //                       Colors.black54),
-      //                 ),
-      //                 SizedBox(
-      //                   height: 10,
-      //                 ),
-      //                 Padding(
-      //                   padding: EdgeInsets.all(7),
-      //                   child: getSmallBoldText(
-      //                       S.of(context).equipmentRequired,
-      //                       Colors.black),
-      //                 ),
-      //                 FutureBuilder<List<ModelEquipment>>(
-      //                   future: _databaseHelper
-      //                       .getEquipmentList(exerciseDetail.id,context),
-      //                   builder: (context, snapshot) {
-      //                     print("idsnap===${snapshot.data}");
-      //                     return (snapshot.hasData)
-      //                         ? getEquipmentList(snapshot.data)
-      //                         : getProgressDialog();
-      //                   },
-      //                 )
-      //               ],
-      //             ),
-      //           ),
-      //
-      //         ],
-      //       ),
-      //     ),
-      //     Align(
-      //       alignment: Alignment.topRight,
-      //       // alignment: Alignment.bottomRight,
-      //       child: Card(
-      //         margin: EdgeInsets.only(right: 14,top: SizeConfig.safeBlockVertical * 30,bottom: 14,left: 14),
-      //         // margin: EdgeInsets.all(14),
-      //         shape: RoundedRectangleBorder(
-      //             borderRadius: BorderRadius.circular(25)),
-      //         child: Row(
-      //           mainAxisSize: MainAxisSize.min,
-      //           children: [
-      //             SizedBox(
-      //               width: 10,
-      //             ),
-      //             IconButton(
-      //               icon: iconFav,
-      //               color: ConstantData.themeData.accentColor,
-      //               onPressed: () {
-      //                 if (exerciseDetail.isFavorite == "1") {
-      //                   _databaseHelper.updateFav(
-      //                       "0", exerciseDetail.id);
-      //                 } else {
-      //                   _databaseHelper.updateFav(
-      //                       "1", exerciseDetail.id);
-      //                 }
-      //                 // setState(() {
-      //                 _databaseHelper
-      //                     .getExerciseDetailByid(
-      //                         exerciseDetail.id, context)
-      //                     .then((value) {
-      //                   setState(() {
-      //                     exerciseDetail = value;
-      //                     setFavIcons();
-      //                   });
-      //                 });
-      //                 // setFavIcons();
-      //                 // });
-      //               },
-      //             ),
-      //             // SizedBox(width: 5,),
-      //             IconButton(
-      //               icon: Icon(CupertinoIcons.share),
-      //               color: ConstantData.themeData.accentColor,
-      //               onPressed: () {},
-      //             ),
-      //             SizedBox(
-      //               width: 10,
-      //             )
-      //           ],
-      //         ),
-      //       ),
-      //     )
-      //   ],
-      // )
-      // ),
-    ),
-        )),
-    onWillPop
-    :
-    _requestPop
-    );
+                  ),
+                ),
+                // child: Stack(
+                //   children: [
+                //     SingleChildScrollView(
+                //       child: Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: <Widget>[
+                //           Hero(
+                //               tag: widget.exerciseDetail.exerciseImage,
+                //               child: Container(
+                //                 margin: EdgeInsets.all(12),
+                //                 height: SizeConfig.safeBlockVertical * 30,
+                //                 color: Colors.white,
+                //                 child: Center(
+                //                   child: _controller.value.initialized
+                //                       ?
+                //                       // VideoPlayer(_controller)
+                //                       AspectRatio(
+                //                           aspectRatio:
+                //                               _controller.value.aspectRatio,
+                //                           child: VideoPlayer(_controller),
+                //                         )
+                //                       : getProgressDialog(),
+                //                   // : Container(color: Colors.amber),
+                //                 ),
+                //               )),
+                //
+                //           Container(
+                //             width: double.infinity,
+                //             decoration: BoxDecoration(
+                //               boxShadow: [
+                //                 BoxShadow(
+                //                   color: Colors.black12,
+                //                   blurRadius: 16.0,
+                //                 ),
+                //               ],
+                //               borderRadius: BorderRadius.only(
+                //                   topLeft: Radius.circular(30),
+                //                   topRight: Radius.circular(30)),
+                //               color: ConstantData.themeData.backgroundColor,
+                //             ),
+                //             child: Column(
+                //               crossAxisAlignment: CrossAxisAlignment.start,
+                //               children: [
+                //                 SizedBox(
+                //                   height: 15,
+                //                 ),
+                //                 Padding(
+                //                   padding: EdgeInsets.all(7),
+                //                   child: getMediumBoldText(
+                //                       widget.exerciseDetail.exerciseName,
+                //                       Colors.black),
+                //                 ),
+                //                 Padding(
+                //                   padding: EdgeInsets.all(7),
+                //                   child: getSmallNormalText(
+                //                       widget.exerciseDetail.exerciseDetail,
+                //                       Colors.black54),
+                //                 ),
+                //                 SizedBox(
+                //                   height: 10,
+                //                 ),
+                //                 Padding(
+                //                   padding: EdgeInsets.all(7),
+                //                   child: getSmallBoldText(
+                //                       S.of(context).equipmentRequired,
+                //                       Colors.black),
+                //                 ),
+                //                 FutureBuilder<List<ModelEquipment>>(
+                //                   future: _databaseHelper
+                //                       .getEquipmentList(exerciseDetail.id,context),
+                //                   builder: (context, snapshot) {
+                //                     print("idsnap===${snapshot.data}");
+                //                     return (snapshot.hasData)
+                //                         ? getEquipmentList(snapshot.data)
+                //                         : getProgressDialog();
+                //                   },
+                //                 )
+                //               ],
+                //             ),
+                //           ),
+                //
+                //         ],
+                //       ),
+                //     ),
+                //     Align(
+                //       alignment: Alignment.topRight,
+                //       // alignment: Alignment.bottomRight,
+                //       child: Card(
+                //         margin: EdgeInsets.only(right: 14,top: SizeConfig.safeBlockVertical * 30,bottom: 14,left: 14),
+                //         // margin: EdgeInsets.all(14),
+                //         shape: RoundedRectangleBorder(
+                //             borderRadius: BorderRadius.circular(25)),
+                //         child: Row(
+                //           mainAxisSize: MainAxisSize.min,
+                //           children: [
+                //             SizedBox(
+                //               width: 10,
+                //             ),
+                //             IconButton(
+                //               icon: iconFav,
+                //               color: ConstantData.themeData.accentColor,
+                //               onPressed: () {
+                //                 if (exerciseDetail.isFavorite == "1") {
+                //                   _databaseHelper.updateFav(
+                //                       "0", exerciseDetail.id);
+                //                 } else {
+                //                   _databaseHelper.updateFav(
+                //                       "1", exerciseDetail.id);
+                //                 }
+                //                 // setState(() {
+                //                 _databaseHelper
+                //                     .getExerciseDetailByid(
+                //                         exerciseDetail.id, context)
+                //                     .then((value) {
+                //                   setState(() {
+                //                     exerciseDetail = value;
+                //                     setFavIcons();
+                //                   });
+                //                 });
+                //                 // setFavIcons();
+                //                 // });
+                //               },
+                //             ),
+                //             // SizedBox(width: 5,),
+                //             IconButton(
+                //               icon: Icon(CupertinoIcons.share),
+                //               color: ConstantData.themeData.accentColor,
+                //               onPressed: () {},
+                //             ),
+                //             SizedBox(
+                //               width: 10,
+                //             )
+                //           ],
+                //         ),
+                //       ),
+                //     )
+                //   ],
+                // )
+                // ),
+              ),
+            )),
+        onWillPop: _requestPop);
     // return new WillPopScope(
     //   onWillPop: _requestPop,
     //   child: MaterialApp(

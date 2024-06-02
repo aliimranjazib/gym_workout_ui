@@ -7,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_native_timezone/flutter_native_timezone.dart';
+
+import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:healtho_app/FirstPage.dart';
 
 import 'package:healtho_app/HomeScreen.dart';
@@ -113,7 +114,7 @@ Future<void> _configureLocalTimeZone() async {
 
   // tz.initializeTimeZones();
   // final String timeZoneName = await platform.invokeMethod<String>('getTimeZoneName');
-  final String timeZoneName = await FlutterNativeTimezone.getLocalTimezone();
+  final String timeZoneName = await FlutterTimezone.getLocalTimezone();
 
   // final timeZone = TimeZone();
   // String timeZoneName = await timeZone.getTimeZoneName();
@@ -146,7 +147,7 @@ void printHello() {
   // app_icon needs to be a added as a drawable
   // resource to the Android head project.
   var android = new AndroidInitializationSettings('@mipmap/ic_launcher');
-  var ios = new IOSInitializationSettings();
+  var ios = new DarwinInitializationSettings();
 
   // initialise settings for both Android and iOS device.
   var settings = new InitializationSettings(android: android, iOS: ios);

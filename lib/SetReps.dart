@@ -19,9 +19,9 @@ import 'package:healtho_app/utils/ConstantWidget.dart';
 class SetReps extends StatefulWidget {
   final ModelExerciseCategory modelExerciseCategory;
   final List<ModelExerciseDetail> exerciseDetailList;
-  final  ModelAddMyPlan modelAddMyPlan;
-  final  int getWeek;
-  final  int getDay;
+  final ModelAddMyPlan modelAddMyPlan;
+  final int getWeek;
+  final int getDay;
 
   SetReps(this.modelExerciseCategory, this.exerciseDetailList,
       this.modelAddMyPlan, this.getWeek, this.getDay);
@@ -37,7 +37,7 @@ class DotsIndicator extends AnimatedWidget {
     required this.controller,
     this.itemCount,
     this.onPageSelected,
-    this.color: Colors.white,
+    this.color = Colors.white,
   }) : super(listenable: controller);
 
   /// The PageController that this DotsIndicator is representing.
@@ -119,7 +119,6 @@ class _SetReps extends State<SetReps> {
     setState(() {});
     super.initState();
   }
-
 
   int selectedPos = 0;
   TextEditingController textEditingController2 = new TextEditingController();
@@ -309,11 +308,10 @@ class _SetReps extends State<SetReps> {
                             itemBuilder: (context, index) {
                               return Card(
                                 color: Colors.white,
-                                 elevation: 2,
-                                 shape: RoundedRectangleBorder(
-                                     borderRadius:
-                                     BorderRadius.all(Radius.circular(6))
-                                 ),
+                                elevation: 2,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(6))),
                                 margin: EdgeInsets.only(bottom: 10),
                                 child: Container(
                                   padding: EdgeInsets.symmetric(
@@ -338,14 +336,14 @@ class _SetReps extends State<SetReps> {
                                         child: Container(
                                           margin: EdgeInsets.symmetric(
                                               horizontal: 15),
-                                          height:
-                                              ConstantWidget.getScreenPercentSize(
-                                                  context, 4),
+                                          height: ConstantWidget
+                                              .getScreenPercentSize(context, 4),
                                           child: TextField(
                                             style: TextStyle(
                                                 fontFamily:
                                                     ConstantData.fontsFamily,
-                                                fontSize: ConstantData.font12Px),
+                                                fontSize:
+                                                    ConstantData.font12Px),
                                             controller: textEditingController1,
                                             inputFormatters: <TextInputFormatter>[
                                               FilteringTextInputFormatter.allow(
@@ -357,9 +355,9 @@ class _SetReps extends State<SetReps> {
                                             decoration: InputDecoration(
                                               border: OutlineInputBorder(),
                                               focusedBorder:
-                                              OutlineInputBorder(),
+                                                  OutlineInputBorder(),
                                               disabledBorder:
-                                              OutlineInputBorder(),
+                                                  OutlineInputBorder(),
                                               isDense: true,
                                               // Added this
                                             ),
@@ -371,15 +369,19 @@ class _SetReps extends State<SetReps> {
                                           children: [
                                             InkWell(
                                               child: Container(
-                                                margin: EdgeInsets.only(right: 5),
+                                                margin:
+                                                    EdgeInsets.only(right: 5),
                                                 height: height,
                                                 width: height,
                                                 color: Colors.grey.shade600,
                                                 child: Center(
                                                   child: Icon(
                                                     Icons.remove,
-                                                    color: ConstantData.cellColor,
-                                                    size: ConstantWidget.getPercentSize(height, 70),
+                                                    color:
+                                                        ConstantData.cellColor,
+                                                    size: ConstantWidget
+                                                        .getPercentSize(
+                                                            height, 70),
                                                   ),
                                                 ),
                                               ),
@@ -399,27 +401,29 @@ class _SetReps extends State<SetReps> {
                                               child: Container(
                                                 margin: EdgeInsets.symmetric(
                                                     horizontal: 7),
-                                                height:   ConstantWidget.getScreenPercentSize(
-                                                    context, 4),
+                                                height: ConstantWidget
+                                                    .getScreenPercentSize(
+                                                        context, 4),
                                                 child: TextField(
                                                   controller:
                                                       textEditingController,
-                                                  inputFormatters: <
-                                                      TextInputFormatter>[
+                                                  inputFormatters: <TextInputFormatter>[
                                                     FilteringTextInputFormatter
-                                                        .allow(RegExp(r'[0-9]')),
+                                                        .allow(
+                                                            RegExp(r'[0-9]')),
                                                   ],
                                                   style: TextStyle(
                                                       fontFamily: ConstantData
                                                           .fontsFamily,
-                                                      fontSize:
-                                                          ConstantData.font12Px),
+                                                      fontSize: ConstantData
+                                                          .font12Px),
                                                   textAlign: TextAlign.center,
                                                   textAlignVertical:
                                                       TextAlignVertical.center,
                                                   enabled: false,
                                                   decoration: InputDecoration(
-                                                    border: OutlineInputBorder(),
+                                                    border:
+                                                        OutlineInputBorder(),
                                                     focusedBorder:
                                                         OutlineInputBorder(),
                                                     disabledBorder:
@@ -439,14 +443,16 @@ class _SetReps extends State<SetReps> {
                                                 });
                                               },
                                               child: Container(
-                                                margin: EdgeInsets.only(left: 5),
+                                                margin:
+                                                    EdgeInsets.only(left: 5),
                                                 height: height,
                                                 width: height,
                                                 color: Colors.grey.shade600,
                                                 child: Center(
                                                   child: Icon(
                                                     Icons.add,
-                                                    color: ConstantData.cellColor,
+                                                    color:
+                                                        ConstantData.cellColor,
                                                     size: ConstantWidget
                                                         .getPercentSize(
                                                             height, 70),
@@ -778,9 +784,9 @@ class _SetReps extends State<SetReps> {
 }
 
 class SetRepsItem extends StatefulWidget {
- final ModelExerciseDetail modelExerciseDetail;
- final  ModelExerciseCategory _modelExerciseCategory;
- final List<int> repsList ;
+  final ModelExerciseDetail modelExerciseDetail;
+  final ModelExerciseCategory _modelExerciseCategory;
+  final List<int> repsList;
 
   SetRepsItem(
       this.modelExerciseDetail, this._modelExerciseCategory, this.repsList);
@@ -1007,9 +1013,7 @@ class _SetRepsItem extends State<SetRepsItem> {
                   child: Container(
                     padding: EdgeInsets.all(12),
                     color: ConstantData.themeData.primaryColor,
-
                     child: InkWell(
-
                       onTap: () {
                         if (widget.repsList.length > 1) {
                           setState(() {
@@ -1017,7 +1021,6 @@ class _SetRepsItem extends State<SetRepsItem> {
                           });
                         }
                       },
-
                       child: Row(
                         children: [
                           Icon(
@@ -1027,7 +1030,8 @@ class _SetRepsItem extends State<SetRepsItem> {
                           Expanded(
                             flex: 1,
                             child: Center(
-                              child: getSmallBoldText("Remove Set", Colors.white),
+                              child:
+                                  getSmallBoldText("Remove Set", Colors.white),
                             ),
                           )
                         ],

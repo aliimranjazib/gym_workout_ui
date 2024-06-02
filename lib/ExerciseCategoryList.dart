@@ -10,7 +10,6 @@ import 'package:healtho_app/model/ModelExerciseDetail.dart';
 import 'package:healtho_app/utils/ConstantWidget.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-
 import 'generated/l10n.dart';
 
 class ExerciseCategoryList extends StatefulWidget {
@@ -67,7 +66,7 @@ class _ExerciseCategoryList extends State<ExerciseCategoryList>
           //   // title: exerciseCategory.cat_name,
           //   home:
           Scaffold(
-            backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         //     appBar: getThemeAppBar(exerciseCategory!.categoryName!, (){
         //       closeActivity();
         //     }),
@@ -95,78 +94,80 @@ class _ExerciseCategoryList extends State<ExerciseCategoryList>
                 ConstantWidget.getAppBar(context, S.of(context).exercise, () {
                   closeActivity();
                 }),
-
                 Container(
-
-                    margin:
-                    EdgeInsets.only(top: ConstantWidget.getMarginTop(context)-ConstantWidget.getScreenPercentSize(context,1.2)),
+                    margin: EdgeInsets.only(
+                        top: ConstantWidget.getMarginTop(context) -
+                            ConstantWidget.getScreenPercentSize(context, 1.2)),
                     child: Column(
                       children: [
                         Container(
-
-
-
-
-
                           height: height,
                           child: ListView.builder(
                             itemCount: widget.list.length,
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              bool isSelected =
-                              (exerciseCategory!.id == widget.list[index].id);
-                              return InkWell(child: Container(
-                                margin: EdgeInsets.symmetric(horizontal: 10),
-                                child: Stack(
-                                  children: [
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: ConstantWidget.getTextWidget(
-                                          widget.list[index].categoryName!,
-                                          (isSelected)
-                                              ? Colors.black
-                                              : Colors.black54,
-                                          TextAlign.start,
-                                          (isSelected)
-                                              ? FontWeight.w800:FontWeight.w500,
-                                          ConstantWidget.getPercentSize(height, 35)),
-                                    ),
-                                    Align(
-                                      alignment: Alignment.bottomLeft,
-                                      child: Container(
-                                        height: 5,
-                                        width: ConstantWidget.getWidthPercentSize(context,5),
-                                        color: (isSelected)
-                                            ? primaryColor
-                                            : Colors.transparent,
+                              bool isSelected = (exerciseCategory!.id ==
+                                  widget.list[index].id);
+                              return InkWell(
+                                child: Container(
+                                  margin: EdgeInsets.symmetric(horizontal: 10),
+                                  child: Stack(
+                                    children: [
+                                      Align(
+                                        alignment: Alignment.centerLeft,
+                                        child: ConstantWidget.getTextWidget(
+                                            widget.list[index].categoryName!,
+                                            (isSelected)
+                                                ? Colors.black
+                                                : Colors.black54,
+                                            TextAlign.start,
+                                            (isSelected)
+                                                ? FontWeight.w800
+                                                : FontWeight.w500,
+                                            ConstantWidget.getPercentSize(
+                                                height, 35)),
                                       ),
-                                    )
-                                  ],
+                                      Align(
+                                        alignment: Alignment.bottomLeft,
+                                        child: Container(
+                                          height: 5,
+                                          width: ConstantWidget
+                                              .getWidthPercentSize(context, 5),
+                                          color: (isSelected)
+                                              ? primaryColor
+                                              : Colors.transparent,
+                                        ),
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                                onTap: (){
+                                onTap: () {
                                   setState(() {
                                     exerciseCategory = widget.list[index];
                                   });
-                                },);
+                                },
+                              );
                             },
                           ),
                         ),
-                        Container(height: 15,color: Colors.white,),
+                        Container(
+                          height: 15,
+                          color: Colors.white,
+                        ),
                         Expanded(
                             child: FutureBuilder<List<ModelExerciseDetail>>(
-                              future: _databaseHelper.getExerciseCount(
-                                  exerciseCategory!.id!, context),
-                              builder: (context, snapshot) {
-                                List<ModelExerciseDetail> exerciseDetail = [];
-                                if (snapshot.hasData) {
-                                  exerciseDetail = snapshot.data!;
-                                }
-                                return (snapshot.hasData)
-                                    ? getGridLIst(exerciseDetail)
-                                    : getProgressDialog();
-                              },
-                            ))
+                          future: _databaseHelper.getExerciseCount(
+                              exerciseCategory!.id!, context),
+                          builder: (context, snapshot) {
+                            List<ModelExerciseDetail> exerciseDetail = [];
+                            if (snapshot.hasData) {
+                              exerciseDetail = snapshot.data!;
+                            }
+                            return (snapshot.hasData)
+                                ? getGridLIst(exerciseDetail)
+                                : getProgressDialog();
+                          },
+                        ))
                       ],
                     ))
               ],
@@ -179,8 +180,7 @@ class _ExerciseCategoryList extends State<ExerciseCategoryList>
   }
 
   getGridLIst(List<ModelExerciseDetail> _list) {
-
-    double height =SizeConfig.safeBlockVertical! * 12;
+    double height = SizeConfig.safeBlockVertical! * 12;
     return ListView.builder(
       itemBuilder: (context, index) {
         ModelExerciseDetail category = _list[index];
@@ -204,7 +204,7 @@ class _ExerciseCategoryList extends State<ExerciseCategoryList>
                   transform: Matrix4.translationValues(
                       0.0, 50 * (1.0 - animation.value), 0.0),
                   child: Container(
-                    color: Colors.white,
+                      color: Colors.white,
                       height: height,
                       width: double.infinity,
                       margin: EdgeInsets.all(8),
@@ -235,25 +235,31 @@ class _ExerciseCategoryList extends State<ExerciseCategoryList>
                               ),
                             ),
 
-                            SizedBox(width: 15,),
-                            Expanded(child: Column(
+                            SizedBox(
+                              width: 15,
+                            ),
+                            Expanded(
+                                child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-
-                                ConstantWidget.getTextWidget(category.exerciseName!, Colors.black,
-                                    TextAlign.start, FontWeight.w600, ConstantWidget.getPercentSize(height, 15)),
-
-                                SizedBox(height: 5,),
-
-                                ConstantWidget.getTextWidget("Difficulty: Beginner", Colors.grey,
-                                    TextAlign.start, FontWeight.w400, ConstantWidget.getPercentSize(height, 14)),
-
-
-
+                                ConstantWidget.getTextWidget(
+                                    category.exerciseName!,
+                                    Colors.black,
+                                    TextAlign.start,
+                                    FontWeight.w600,
+                                    ConstantWidget.getPercentSize(height, 15)),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                ConstantWidget.getTextWidget(
+                                    "Difficulty: Beginner",
+                                    Colors.grey,
+                                    TextAlign.start,
+                                    FontWeight.w400,
+                                    ConstantWidget.getPercentSize(height, 14)),
                               ],
                             ))
-
 
                             // Container(
                             //     width: SizeConfig.safeBlockHorizontal! * 50,
@@ -327,24 +333,18 @@ class VideoWidget extends StatefulWidget {
 }
 
 class _VideoWidgetState extends State<VideoWidget> {
-
-
   @override
   void initState() {
     super.initState();
-
-
   }
 
   YoutubePlayerController youtubePlayerController = YoutubePlayerController(
-    initialVideoId: YoutubePlayer.convertUrlToId("https://www.youtube.com/watch?v=krlBcLYtDbk")!,
+    initialVideoId: YoutubePlayer.convertUrlToId(
+        "https://www.youtube.com/watch?v=krlBcLYtDbk")!,
     flags: YoutubePlayerFlags(
       autoPlay: true,
-
     ),
   );
-
-
 
   @override
   void dispose() {
@@ -354,7 +354,6 @@ class _VideoWidgetState extends State<VideoWidget> {
 
   @override
   Widget build(BuildContext context) {
-
     print("video---truw");
     return Container(
       child: Card(
@@ -363,20 +362,19 @@ class _VideoWidgetState extends State<VideoWidget> {
         child: Column(
           children: <Widget>[
             Padding(
-              padding: const EdgeInsets.all(8.0),
-              // child: AspectRatio(
-              //   aspectRatio: videoPlayerController!.value.aspectRatio,
-              //   child: VideoPlayer(videoPlayerController!),
-              // ),
+                padding: const EdgeInsets.all(8.0),
+                // child: AspectRatio(
+                //   aspectRatio: videoPlayerController!.value.aspectRatio,
+                //   child: VideoPlayer(videoPlayerController!),
+                // ),
 
-           child:     YoutubePlayer(
+                child: YoutubePlayer(
                   controller: youtubePlayerController,
                   bottomActions: [
                     CurrentPosition(),
                     ProgressBar(isExpanded: true),
                   ],
-                )
-            ),
+                )),
           ],
         ),
       ),

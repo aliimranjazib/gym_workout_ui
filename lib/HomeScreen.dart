@@ -5,7 +5,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_email_sender/flutter_email_sender.dart';
 import 'package:healtho_app/AboutDetailWidget.dart';
 import 'package:healtho_app/AddPlan.dart';
-import 'package:launch_review/launch_review.dart';
+// import 'package:launch_review/launch_review.dart';
 
 import 'package:healtho_app/ChallengesIntroduction.dart';
 import 'package:healtho_app/ConstantColors.dart';
@@ -692,7 +692,7 @@ class _MoreSettingWidget extends State<MoreSettingWidget> {
                           ),
                         ),
                         onTap: () {
-                          LaunchReview.launch();
+                          // LaunchReview.launch();
                         },
                       ),
                       GestureDetector(
